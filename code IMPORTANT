@@ -1,0 +1,43 @@
+# Simple database and login system
+database = {}  # A dictionary to store information
+
+def login():
+    code = input("Enter the access code: ")
+    if code == "th123":
+        print("Access granted.")
+        menu()
+    else:
+        print("Access denied. Incorrect code.")
+
+def menu():
+    while True:
+        print("\n1. Add Information")
+        print("2. View Information")
+        print("3. Exit")
+        choice = input("Choose an option: ")
+        
+        if choice == "1":
+            add_info()
+        elif choice == "2":
+            view_info()
+        elif choice == "3":
+            print("Exiting system. Goodbye!")
+            break
+        else:
+            print("Invalid option. Try again.")
+
+def add_info():
+    key = input("Enter a key for the information: ")
+    value = input("Enter the information: ")
+    database[key] = value
+    print(f"Information saved under '{key}'.")
+
+def view_info():
+    if not database:
+        print("No information available.")
+    else:
+        for key, value in database.items():
+            print(f"{key}: {value}")
+
+# Start the program
+login()
